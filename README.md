@@ -55,4 +55,45 @@ export default function App() {
 4. created a .env file to hide my link connected to DB
 
 ### Created Models, Routes and Controller
+1. User model:
+```
+import mongoose from "mongoose";
+
+const userSchema = new mongoose.Schema(
+  {
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+  },
+  { timestamps: true }
+);
+
+
+const User = mongoose.model('User', userSchema);
+
+export default User;
+```
+auth controller
+```
+import express from 'express';
+import { signup } from '../controllers/auth.controller.js';
+
+const router = express.Router();
+
+router.post("/signup", signup)
+
+export default router;
+```
+
+Used insomnia rest to test my API calls
+[Link for Insomnia Rest](https://insomnia.rest)
+Set up an account test API calls
+1. Click on the home icon
+2. Click on the + icon and select request collections
+3. Name your collections
+4. Click on the + icon and select http request
+5. select get, post, put and add the api address
+6. Add json in the body and send the request.
+
+
 
